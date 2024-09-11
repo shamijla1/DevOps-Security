@@ -48,7 +48,15 @@ def get_comments_page(quote_id):
 @app.route("/quotes", methods=["POST"])
 def post_quote():
     with db:
+        # Onveilige code (SQL-injectie gevoelig):
         # db.execute(f"""insert into quotes(text,attribution) values("{request.form['text']}","{request.form['attribution']}")""")
+        # db.execute(f"""insert into quotes(text,attribution) values("{request.form['text']}","{request.form['attribution']}")""")
+        
+        # Deze code is onveilig omdat gebruikersinput direct wordt ingevoegd in de SQL-query zonder enige validatie of sanitisatie. 
+        # Dit maakt de applicatie kwetsbaar voor SQL-injectie-aanvallen. Een aanvaller kan kwaadwillende SQL-commando's invoeren 
+        # via 'request.form', wat kan leiden tot ongeautoriseerde toegang tot of manipulatie van de database.
+        
+        # Veilige versie met prepared statements:
         db.execute("""INSERT INTO quotes(text, attribution) VALUES (?, ?)""", (request.form['text'], request.form['attribution']))
     return redirect("/#bottom")
 
@@ -67,19 +75,30 @@ def signin():
     username = request.form["username"].lower()
     password = request.form["password"]
 
-    user = db.execute(f"select id, password from users where name='{username}'").fetchone()
+    # Deze query is op zich veilig (geen SQL-injectie probleem hier), maar we gebruiken de veilige versie met prepared statements
+    user = db.execute("select id, password from users where name=?", (username,)).fetchone()
+
     if user: # user exists
         if password != user['password']:
-            # wrong! redirect to main page with an error message
+            # Foute wachtwoord, terugleiden naar de hoofdpagina met een foutmelding
             return redirect('/?error='+urllib.parse.quote("Invalid password!"))
         user_id = user['id']
-    else: # new sign up
+    else: # Nieuwe registratie
         with db:
-            cursor = db.execute(f"insert into users(name,password) values('{username}', '{password}')")
+            # Toevoegen van nieuwe gebruiker met prepared statement
+            cursor = db.execute("insert into users(name,password) values(?, ?)", (username, password))
             user_id = cursor.lastrowid
-    
+
     response = make_response(redirect('/'))
-    response.set_cookie('user_id', str(user_id))
+
+    # Onveilige code (ontbreekt HttpOnly en Secure flags)
+    # response.set_cookie('user_id', str(user_id))
+    
+    # Veilige versie:
+    # Het gebruik van de 'HttpOnly'-vlag zorgt ervoor dat de cookie niet toegankelijk is via JavaScript (voorkomt XSS-aanvallen).
+    # Het gebruik van de 'Secure'-vlag zorgt ervoor dat de cookie alleen wordt verzonden via HTTPS.
+    response.set_cookie('user_id', str(user_id), httponly=True, secure=True)
+
     return response
 
 
