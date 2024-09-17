@@ -75,7 +75,8 @@ jobs:
           sleep 10s
           curl http://localhost
           docker ps -aq | xargs docker stop | xargs docker rm
-              #- uses: actions/checkout@v4
+
+      - uses: actions/checkout@v4
       - name: Install Postman CLI
         run: |
           curl -o- "https://dl-cli.pstmn.io/install/linux64.sh" | sh
@@ -83,7 +84,7 @@ jobs:
         run: postman login --with-api-key ${{ secrets.POSTMAN_API_KEY }}
       - name: Run API tests
         run: |
-          postman collection run "${{ github.workspace }}/postman/collections/Student App API.json" -e "25436974-c833c679-29df-41a5-9bf4-cf468b06dd2e"
+          postman collection run "${{ github.workspace }}/postman/collections/Student App API.json"
 
   deploy:
     name: Deploy
