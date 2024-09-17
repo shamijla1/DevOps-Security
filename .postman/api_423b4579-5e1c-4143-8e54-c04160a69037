@@ -9,6 +9,7 @@ id = 423b4579-5e1c-4143-8e54-c04160a69037
 
 [config.relations.collections]
 rootDirectory = postman/collections
+files[] = {"id":"25436974-c10c60c3-1a42-4d65-b518-2e0cac04ebc9","path":"Student App API.json","metaData":{}}
 
 [config.relations.collections.metaData]
 

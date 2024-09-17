@@ -1,0 +1,95 @@
+{
+	"info": {
+		"_postman_id": "c10c60c3-1a42-4d65-b518-2e0cac04ebc9",
+		"name": "Student App API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_uid": "25436974-c10c60c3-1a42-4d65-b518-2e0cac04ebc9"
+	},
+	"item": [
+		{
+			"name": "New Request",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "6974381e-fa05-4fe4-90e5-b85903d7def3",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "336210ce-9eb4-445f-95cb-3a6dbb58ec66",
+						"exec": [
+							"try {\r",
+							"    const response = await pm.sendRequest({\r",
+							"        url: \"https://postman-echo.com/get\",\r",
+							"        method: \"GET\"\r",
+							"    });\r",
+							"\r",
+							"    console.log(response.json());\r",
+							"} catch (err) {\r",
+							"    console.error(err);\r",
+							"}"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"id": "6ba2905d-341b-4d6d-8f00-5df9ff92ad47",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}\n",
+					"host": [
+						"{{baseUrl}}\n"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "f0b616ae-c66c-4745-8726-2c0e5d2b12b5",
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "8454b51e-3203-414d-9b1e-dc2e4e74670e",
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "95f58c98-819d-40ba-b5f4-53accb7f30b8",
+			"key": "{{baseUrl}}\n",
+			"value": "http://54.175.29.8:30000/",
+			"type": "string"
+		}
+	]
+}
