@@ -50,7 +50,8 @@ jobs:
           only-severities: critical,high
           github-token: ${{ secrets.GITHUB_TOKEN }}
           exit-on: vulnerability # Dit zorgt ervoor dat de pipeline stopt bij een hoge kwetsbaarheid
-          
+          #write-comment: true
+
       - name: Check Exit Code
         run: echo $?
 
