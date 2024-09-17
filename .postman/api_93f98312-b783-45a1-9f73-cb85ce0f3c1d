@@ -14,7 +14,9 @@ files[] = {"id":"25436974-f7429f1f-0566-48d9-b9b8-2c7f68ad47b1","path":"Student 
 [config.relations.collections.metaData]
 
 [config.relations.apiDefinition]
+files[] = {"path":".github/workflows/build.yaml","metaData":{}}
 files[] = {"path":"postman-tests.yaml","metaData":{}}
 
 [config.relations.apiDefinition.metaData]
 type = openapi:3
+rootFiles[] = .github/workflows/build.yaml
