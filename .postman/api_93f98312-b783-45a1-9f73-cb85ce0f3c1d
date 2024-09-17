@@ -19,4 +19,3 @@ files[] = {"path":"postman-tests.yaml","metaData":{}}
 
 [config.relations.apiDefinition.metaData]
 type = openapi:3
-rootFiles[] = .github/workflows/build.yaml
