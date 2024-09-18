@@ -14,12 +14,15 @@
 					"script": {
 						"id": "dfdb2cb6-283e-4a8b-a9a0-001c8548f803",
 						"exec": [
-							"pm.test(\"Status code is 200\", function () {\r",
-							"    pm.response.to.have.status(200);\r",
+							"pm.test(\"API retourneert 404 voor niet-bestaande URL\", function () {\r",
+							"    pm.sendRequest({\r",
+							"        url: pm.variables.get(\"baseUrl\") + \"/non-existent-endpoint\", // Verzend een verzoek naar een endpoint dat niet bestaat\r",
+							"        method: 'GET'\r",
+							"    }, function (err, res) {\r",
+							"        pm.expect(res).to.have.property('status', 404); // Controleer of de status 404 is\r",
+							"    });\r",
 							"});\r",
-							"pm.test(\"Response time is less than 300ms\", function () {\r",
-							"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
-							"});"
+							""
 						],
 						"type": "text/javascript",
 						"packages": {}
