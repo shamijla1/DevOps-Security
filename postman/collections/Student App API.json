@@ -66,7 +66,7 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "0be1de2b-c713-449d-a3d9-ebfe0846bac8",
+				"id": "74d77320-a0c0-432e-b8f3-45290d9c7ce0",
 				"type": "text/javascript",
 				"packages": {},
 				"exec": [
@@ -77,13 +77,21 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "d88f4aec-0b35-49c4-9e15-8c446580c51c",
+				"id": "5870b067-c68d-4d8a-9038-7c7e6b580109",
 				"type": "text/javascript",
 				"packages": {},
 				"exec": [
 					""
 				]
 			}
+		}
+	],
+	"variable": [
+		{
+			"id": "80d8cdb4-2610-4a2b-a754-f25e1f97bb3e",
+			"key": "baseurl",
+			"value": "http://54.242.212.252:30000",
+			"type": "string"
 		}
 	]
 }
