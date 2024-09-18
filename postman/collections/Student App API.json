@@ -1,9 +1,9 @@
 {
 	"info": {
-		"_postman_id": "514c6d93-be67-4ca2-b142-6201a26868f8",
+		"_postman_id": "87e02685-7eea-4165-886b-3ef13e515e93",
 		"name": "Student App API",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_uid": "25436974-514c6d93-be67-4ca2-b142-6201a26868f8"
+		"_uid": "25436974-87e02685-7eea-4165-886b-3ef13e515e93"
 	},
 	"item": [
 		{
@@ -12,7 +12,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "18085138-9e34-4541-bd44-ae623047f23a",
+						"id": "dfdb2cb6-283e-4a8b-a9a0-001c8548f803",
 						"exec": [
 							"pm.test(\"Status code is 200\", function () {\r",
 							"    pm.response.to.have.status(200);\r",
@@ -28,7 +28,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "0855fb7e-4620-44b5-bd15-ca1fe30d3a02",
+						"id": "1df0c255-e0bb-430b-b9e1-86cb3fe0f554",
 						"exec": [
 							""
 						],
@@ -37,7 +37,7 @@
 					}
 				}
 			],
-			"id": "dde3db64-0033-4016-a443-38fc1bd8be69",
+			"id": "51f79971-79ab-4db6-86c0-2959ca7624e9",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -63,7 +63,7 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "76ffe6bc-0d2f-414a-9996-6f955734e7e7",
+				"id": "0be1de2b-c713-449d-a3d9-ebfe0846bac8",
 				"type": "text/javascript",
 				"packages": {},
 				"exec": [
@@ -74,7 +74,7 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "2028584c-df1f-4b48-96bb-f1241d205ff9",
+				"id": "d88f4aec-0b35-49c4-9e15-8c446580c51c",
 				"type": "text/javascript",
 				"packages": {},
 				"exec": [
