@@ -14,13 +14,8 @@
 					"script": {
 						"id": "dfdb2cb6-283e-4a8b-a9a0-001c8548f803",
 						"exec": [
-							"pm.test(\"API retourneert 404 voor niet-bestaande URL\", function () {\r",
-							"    pm.sendRequest({\r",
-							"        url: pm.variables.get(\"baseUrl\") + \"/non-existent-endpoint\", // Verzend een verzoek naar een endpoint dat niet bestaat\r",
-							"        method: 'GET'\r",
-							"    }, function (err, res) {\r",
-							"        pm.expect(res).to.have.property('status', 404); // Controleer of de status 404 is\r",
-							"    });\r",
+							"pm.test(\"Response body contains expected text\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Quoter XP\");\r",
 							"});\r",
 							""
 						],
@@ -88,7 +83,7 @@
 	],
 	"variable": [
 		{
-			"id": "80d8cdb4-2610-4a2b-a754-f25e1f97bb3e",
+			"id": "8176b4e6-de4e-4ccc-8490-723138a13380",
 			"key": "baseurl",
 			"value": "http://54.242.212.252:30000",
 			"type": "string"
