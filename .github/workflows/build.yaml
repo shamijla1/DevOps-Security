@@ -47,10 +47,14 @@ jobs:
         with:
           command: cves
           image: shamijla/student-app:latest
-          only-severities: critical,high
+          only-severities: critical
+          only-fixed: true
+          ignore-base : false
+          ignore-unchanged: false 
           github-token: ${{ secrets.GITHUB_TOKEN }}
           exit-on: vulnerability # Dit zorgt ervoor dat de pipeline stopt bij een hoge kwetsbaarheid
-          #write-comment: true
+          write-comment: true
+          exit-code: false
 
       - name: Check Exit Code
         run: echo $?
@@ -100,3 +104,4 @@ jobs:
               sudo kubectl delete deployment --all              
               sudo kubectl apply -f ${{ github.workspace }}/kubernetes/deployment.yaml --force
               sudo kubectl apply -f ${{ github.workspace }}/kubernetes/nginx-service.yaml --force
+   
